@@ -1,10 +1,10 @@
 import { DEFAULT_TAGS } from "src/components/qa/shared/defaultTags"
-import { CheckboxGroup, useDisclosure } from "@chakra-ui/react"
+import { CheckboxGroup, useDisclosure, Flex, Spacer, Box, Heading, Input, Grid, Button, ButtonGroup } from "@chakra-ui/react"
+import { FormControl, FormLabel, FormErrorMessage, FormHelperText } from "@chakra-ui/react"
 import { useState } from "react"
 import QAnsAppBody from "../../components/qa/QAnsAppBody"
 import QAnsTag from "../../components/qa/QAnsTag"
 import QAnsPost from "../../components/qa/QAnsPost"
-
 
 interface state {
     allTags: {
@@ -26,21 +26,45 @@ const TagQA = () => {
 
     return (
         <QAnsAppBody>
+            <Grid h="4em" templateColumns="repeat(4, 2fr)" gap={"50px"}>
+                <Heading as="h1" size="2xl" noOfLines={1}>
+                    Q & A
+                </Heading>
+
+                {/* <Input type="search" placeholder="🔍  Search..." size="md" id="search" /> */}
+                <QAnsPost></QAnsPost>
+            </Grid>
+            <Input type="search" placeholder="🔍  Search..." size="md" id="search" />
+            <Grid h="1em" templateColumns="repeat(2, 1fr)" gap={"10px"}></Grid>
+
             <CheckboxGroup colorScheme="white">
-                    {TState.allTags.map(({ tagId, tagName }) => (
-                        // DatingInterestTag component: Used for generating interactive tag
-                        <QAnsTag
-                            key={tagId}
-                            tagId={tagId}
-                            tagName={tagName}
-                            onOpen={onOpen}
-                            selectedTags={selectedTags}
-                            numOfTag={numOfTag}
-                            setNumOfTag={setNumOfTag}
-                            setSelectedTag={setSelectedTag}
-                        />
-                    ))}
-                </CheckboxGroup>
+                {TState.allTags.map(({ tagId, tagName }) => (
+                    // DatingInterestTag component: Used for generating interactive tag
+                    <QAnsTag
+                        key={tagId}
+                        tagId={tagId}
+                        tagName={tagName}
+                        onOpen={onOpen}
+                        selectedTags={selectedTags}
+                        numOfTag={numOfTag}
+                        setNumOfTag={setNumOfTag}
+                        setSelectedTag={setSelectedTag}
+                    />
+                ))}
+            </CheckboxGroup>
+
+            <Box bg="white" w="100%" p={100} color="grey">
+                <Heading size="lg" fontSize="30px">
+                    Q&A Headtitle
+                </Heading>
+                <br></br>
+                <FormControl>
+                    <Input placeholder="Create Your Post Here..." />
+                </FormControl>
+                <br></br>
+                <Button colorScheme="green"> Yes </Button>
+                <Button colorScheme="red"> No </Button>
+            </Box>
         </QAnsAppBody>
     )
 }
