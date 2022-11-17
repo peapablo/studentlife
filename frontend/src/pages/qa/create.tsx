@@ -5,6 +5,7 @@ import { useState } from "react"
 import QAnsAppBody from "../../components/qa/QAnsAppBody"
 import QAnsTag from "../../components/qa/QAnsTag"
 import QAnsPost from "../../components/qa/QAnsPost"
+import QAnsBox from "src/components/qa/QAnsBox"
 
 interface state {
     allTags: {
@@ -54,10 +55,7 @@ const TagQA = () => {
             </CheckboxGroup>
 
             <Box bg="white" w="100%" p={100} color="grey">
-                <Heading size="lg" fontSize="30px">
-                    Q&A Headtitle
-                </Heading>
-                <br></br>
+                <Input placeholder="Q&A Headtitle " size="lg" />
                 <FormControl>
                     <Input placeholder="Create Your Post Here..." />
                 </FormControl>
